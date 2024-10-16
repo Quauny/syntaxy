@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import TheComposer from '@/lib/components/TheComposer.vue';
+import ThePluginWrapper from '@/lib/components/ThePluginWrapper.vue';
+</script>
+
 <template>
-  <div>Syntaxy editor</div>
+  <TheComposer>
+    <ThePluginWrapper />
+  </TheComposer>
 </template>

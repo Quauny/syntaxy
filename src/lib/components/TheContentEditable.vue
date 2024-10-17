@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { injectStrict } from '@/lib/utils';
-import { EditorInjectionKey } from '@/lib/symbols';
+import { useEditor } from '@/lib/composables';
 import { onMounted, ref, type Ref } from 'vue';
 
-const editor = injectStrict(EditorInjectionKey);
+const editor = useEditor();
 
 const contentEditableRef: Ref<HTMLDivElement | null> = ref(null);
 

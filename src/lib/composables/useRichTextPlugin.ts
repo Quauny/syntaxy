@@ -1,9 +1,8 @@
-import { injectStrict } from '@/lib/utils';
-import { EditorInjectionKey } from '@/lib/symbols';
+import { useEditor } from '@/lib/composables';
 import { registerRichText } from '@lexical/rich-text';
 
 export default function useRichTextPlugin() {
-  const editor = injectStrict(EditorInjectionKey);
+  const editor = useEditor();
 
   registerRichText(editor);
 }

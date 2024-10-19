@@ -9,7 +9,9 @@ const editor = useEditor();
 </script>
 
 <template>
-  <div class="stx-toolbar">
+  <div
+    class="stx-flex stx-gap-1 stx-border-x stx-border-b-0 stx-border-t stx-border-solid stx-border-gray-400 stx-p-1"
+  >
     <AppButton
       :icon="IconName.Undo"
       @click="editor.dispatchCommand(UNDO_COMMAND, undefined)"
@@ -18,17 +20,6 @@ const editor = useEditor();
       :icon="IconName.Redo"
       @click="editor.dispatchCommand(REDO_COMMAND, undefined)"
     />
-    <AppSeparator />
+    <AppSeparator vertical />
   </div>
 </template>
-
-<style lang="css" scoped>
-.stx-toolbar {
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  border-top: 1px solid #999;
-  border-left: 1px solid #999;
-  border-right: 1px solid #999;
-}
-</style>

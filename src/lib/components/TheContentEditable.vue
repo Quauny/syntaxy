@@ -17,18 +17,6 @@ onMounted(() => {
   <div
     ref="contentEditableRef"
     contenteditable
-    class="stx-content-editable"
+    class="stx-min-h-80 stx-border stx-border-solid stx-border-gray-400 stx-p-1 focus:stx-outline-none"
   ></div>
 </template>
-
-<style lang="css" scoped>
-.stx-content-editable {
-  border: 1px solid #999;
-  min-height: 300px;
-  padding: 5px;
-}
-
-.stx-content-editable:focus {
-  outline: none;
-}
-</style>

@@ -18,24 +18,11 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <button class="stx-button" @click="emit('click')">
+  <button
+    class="stx-cursor-pointer stx-rounded-lg stx-border-0 stx-bg-transparent stx-px-2 stx-py-1 stx-text-gray-600 hover:stx-bg-gray-100"
+    @click="emit('click')"
+  >
     <span v-if="props.label">{{ props.label }}</span>
     <AppIcon v-if="props.icon" :name="props.icon" />
   </button>
 </template>
-
-<style lang="css" scoped>
-.stx-button {
-  padding: 4px 8px;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-  border-radius: 9px;
-  color: #555;
-  background-color: transparent;
-}
-
-.stx-button:hover {
-  background-color: #eee;
-}
-</style>

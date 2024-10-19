@@ -3,6 +3,8 @@
     "Vue.volar",
     "vitest.explorer",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "moalamri.inline-fold",
+    "bradlc.vscode-tailwindcss"
   ]
 }

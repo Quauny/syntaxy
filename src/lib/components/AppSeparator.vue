@@ -1,10 +1,15 @@
-<template>
-  <div class="stx-separator"></div>
-</template>
+<script setup lang="ts">
+const props = defineProps({
+  vertical: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
 
-<style lang="css" scoped>
-.stx-separator {
-  width: 1px;
-  background-color: #999;
-}
-</style>
+<template>
+  <div
+    class="stx-bg-gray-400"
+    :class="[props.vertical ? 'stx-w-px' : 'stx-h-px']"
+  ></div>
+</template>

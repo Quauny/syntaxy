@@ -10,9 +10,7 @@ const editor = useEditor();
 </script>
 
 <template>
-  <div
-    class="stx-flex stx-gap-1 stx-border-x stx-border-b-0 stx-border-t stx-border-solid stx-border-gray-400 stx-p-1"
-  >
+  <div class="stx-flex stx-gap-1 stx-p-1">
     <AppButton
       :icon="IconName.Undo"
       @click="editor.dispatchCommand(UNDO_COMMAND, undefined)"

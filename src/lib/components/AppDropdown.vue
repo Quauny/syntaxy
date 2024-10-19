@@ -49,7 +49,7 @@ const emit = defineEmits<{
       leave-to-class="stx-transform stx-scale-95 stx-opacity-0"
     >
       <MenuItems
-        class="stx-absolute stx-left-0 stx-w-40 stx-rounded-md stx-border stx-border-solid stx-border-gray-400 stx-bg-white"
+        class="stx-absolute stx-left-0 stx-w-40 stx-rounded-md stx-bg-white stx-shadow-lg"
       >
         <div class="stx-flex-col stx-gap-16 stx-px-1 stx-py-1">
           <MenuItem v-for="item in props.options" :key="`${item.label}`">

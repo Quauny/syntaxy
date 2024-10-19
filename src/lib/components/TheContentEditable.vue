@@ -17,6 +17,6 @@ onMounted(() => {
   <div
     ref="contentEditableRef"
     contenteditable
-    class="stx-min-h-80 stx-border stx-border-solid stx-border-gray-400 stx-p-1 focus:stx-outline-none"
+    class="stx-min-h-80 stx-p-1 focus:stx-outline-none"
   ></div>
 </template>

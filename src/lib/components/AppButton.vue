@@ -31,5 +31,11 @@ const emit = defineEmits<{
   border: none;
   cursor: pointer;
   border-radius: 9px;
+  color: #555;
+  background-color: transparent;
+}
+
+.stx-button:hover {
+  background-color: #eee;
 }
 </style>

@@ -6,6 +6,5 @@
 .stx-separator {
   width: 1px;
   background-color: #999;
-  margin: 0 4px;
 }
 </style>

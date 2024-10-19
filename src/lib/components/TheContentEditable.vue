@@ -23,7 +23,7 @@ onMounted(() => {
 
 <style lang="css" scoped>
 .stx-content-editable {
-  border: 1px solid orangered;
+  border: 1px solid #999;
   min-height: 300px;
   padding: 5px;
 }

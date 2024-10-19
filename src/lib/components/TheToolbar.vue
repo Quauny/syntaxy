@@ -27,6 +27,8 @@ const editor = useEditor();
   display: flex;
   gap: 4px;
   padding: 4px;
-  border: 1px solid rgb(69, 69, 187);
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
 }
 </style>

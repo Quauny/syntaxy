@@ -8,6 +8,6 @@ useHistoryPlugin();
 </script>
 
 <template>
-  <TheToolbar style="margin-bottom: 10px" />
+  <TheToolbar />
   <TheContentEditable />
 </template>

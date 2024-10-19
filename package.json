@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@headlessui/vue": "^1.7.23",
     "@lexical/history": "^0.18.0",
     "@lexical/rich-text": "^0.18.0",
     "lexical": "^0.18.0",

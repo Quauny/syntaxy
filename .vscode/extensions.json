@@ -4,7 +4,6 @@
     "vitest.explorer",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "moalamri.inline-fold",
     "bradlc.vscode-tailwindcss"
   ]
 }

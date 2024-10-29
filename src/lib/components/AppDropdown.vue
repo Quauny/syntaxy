@@ -6,8 +6,8 @@ import AppIcon from '@/lib/components/AppIcon.vue';
 import { IconName } from '@/lib/icons';
 
 interface DropDownOption {
+  key: string;
   label: string;
-  shortLabel: string;
 }
 
 const props = defineProps({
@@ -20,6 +20,12 @@ const props = defineProps({
   options: {
     type: Array as PropType<DropDownOption[]>,
     default: () => [],
+  },
+  activeItem: {
+    type: Function as PropType<
+      (item: DropDownOption, label: string) => boolean
+    >,
+    default: () => false,
   },
 });
 
@@ -52,11 +58,11 @@ const emit = defineEmits<{
         class="stx-absolute stx-left-0 stx-w-40 stx-rounded-md stx-bg-white stx-shadow-lg"
       >
         <div class="stx-flex-col stx-gap-16 stx-px-1 stx-py-1">
-          <MenuItem v-for="item in props.options" :key="`${item.label}`">
+          <MenuItem v-for="item in props.options" :key="`${item.key}`">
             <AppButton
               :label="item.label"
               full-width
-              :active="item.shortLabel === props.label"
+              :active="props.activeItem(item, props.label || '')"
               @click="emit('optionClick', item)"
             />
           </MenuItem>

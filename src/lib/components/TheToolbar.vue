@@ -13,7 +13,7 @@ import {
 import AppSeparator from '@/lib/components/AppSeparator.vue';
 import AppDropdown from './AppDropdown.vue';
 import { onMounted, onUnmounted } from 'vue';
-import { $findMatchingParent } from '@lexical/utils';
+import { $findMatchingParent, $getNearestNodeOfType } from '@lexical/utils';
 import { $isHeadingNode } from '@lexical/rich-text';
 import {
   TextSizeKey,
@@ -22,9 +22,12 @@ import {
   formatTextSize,
   getShortLabel,
 } from '../helpers/textSize';
+import { formatList, ListTypeKey } from '../helpers/listType';
+import { $isListNode, ListNode } from '@lexical/list';
 
 const editor = useEditor();
 
+/**** TEXT SIZE ****/
 const textSize = ref(TextSizeKey.Paragraph);
 const selectedTextSizeOption = computed(
   () =>
@@ -33,6 +36,10 @@ const selectedTextSizeOption = computed(
 const selectedTextSizeShortLabel = computed(() =>
   getShortLabel(selectedTextSizeOption.value.key),
 );
+
+/**** LIST TYPE ****/
+const isUnorderedListOn = ref(false);
+const isOrderedListOn = ref(false);
 
 function $updateToolbar() {
   const selection = $getSelection();
@@ -53,12 +60,29 @@ function $updateToolbar() {
     const elementDOM = editor.getElementByKey(elementKey);
 
     if (elementDOM !== null) {
-      const type = $isHeadingNode(element)
-        ? element.getTag()
-        : element.getType();
+      if ($isListNode(element)) {
+        const parentList = $getNearestNodeOfType<ListNode>(
+          anchorNode,
+          ListNode,
+        );
+        const type = parentList
+          ? parentList.getListType()
+          : element.getListType();
 
-      if (textSizeOptions.some(tso => tso.key === type))
-        textSize.value = type as TextSizeKey;
+        isUnorderedListOn.value = type === ListTypeKey.Bullet;
+        isOrderedListOn.value = type === ListTypeKey.Number;
+        textSize.value = TextSizeKey.Paragraph;
+      } else {
+        isUnorderedListOn.value = false;
+        isOrderedListOn.value = false;
+        const type = $isHeadingNode(element)
+          ? element.getTag()
+          : element.getType();
+
+        if (textSizeOptions.some(tso => tso.key === type)) {
+          textSize.value = type as TextSizeKey;
+        }
+      }
     }
   }
 }
@@ -95,5 +119,16 @@ onMounted(() => {
         item => formatTextSize(editor, textSize, item as TextSizeOption)
       "
     />
+    <AppButton
+      :icon="IconName.UnorderedList"
+      :active="isUnorderedListOn"
+      @click="formatList(editor, ListTypeKey.Bullet)"
+    />
+    <AppButton
+      :icon="IconName.OrderedList"
+      :active="isOrderedListOn"
+      @click="formatList(editor, ListTypeKey.Number)"
+    />
+    <AppSeparator vertical />
   </div>
 </template>

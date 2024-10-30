@@ -2,9 +2,14 @@
 import TheToolbar from '@/lib/components/TheToolbar.vue';
 import TheContentEditable from '@/lib/components/TheContentEditable.vue';
 import AppSeparator from '@/lib/components/AppSeparator.vue';
-import { useRichTextPlugin, useHistoryPlugin } from '@/lib/composables';
+import {
+  useRichTextPlugin,
+  useHistoryPlugin,
+  useListPlugin,
+} from '@/lib/composables';
 
 useRichTextPlugin();
+useListPlugin();
 useHistoryPlugin();
 </script>
 

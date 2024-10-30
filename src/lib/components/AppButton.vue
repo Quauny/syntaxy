@@ -27,10 +27,10 @@ const emit = defineEmits<{
 
 <template>
   <button
-    class="stx-cursor-pointer stx-rounded-lg stx-border-0 stx-bg-transparent stx-px-2 stx-py-1 stx-text-gray-500 hover:stx-bg-gray-100"
+    class="stx-cursor-pointer stx-rounded-lg stx-border-0 stx-px-2 stx-py-1 stx-text-gray-500 hover:stx-bg-gray-100"
     :class="[
       props.fullWidth ? 'stx-w-full' : '',
-      props.active ? 'stx-bg-gray-100' : '',
+      props.active ? 'stx-bg-gray-100' : 'stx-bg-transparent',
     ]"
     @click="emit('click')"
   >

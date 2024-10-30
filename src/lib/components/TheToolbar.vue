@@ -20,6 +20,7 @@ import {
   textSizeOptions,
   type TextSizeOption,
   formatTextSize,
+  getShortLabel,
 } from '../helpers/textSize';
 
 const editor = useEditor();
@@ -28,6 +29,9 @@ const textSize = ref(TextSizeKey.Paragraph);
 const selectedTextSizeOption = computed(
   () =>
     textSizeOptions.find(item => item.key === textSize.value) as TextSizeOption,
+);
+const selectedTextSizeShortLabel = computed(() =>
+  getShortLabel(selectedTextSizeOption.value.key),
 );
 
 function $updateToolbar() {
@@ -84,7 +88,7 @@ onMounted(() => {
     />
     <AppSeparator vertical />
     <AppDropdown
-      :label="selectedTextSizeOption.label"
+      :label="selectedTextSizeShortLabel"
       :options="textSizeOptions"
       :active-item="item => item.key === selectedTextSizeOption.key"
       @option-click="

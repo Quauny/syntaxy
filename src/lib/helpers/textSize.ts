@@ -69,3 +69,16 @@ export function formatTextSize(
 
   formatParagraph(editor);
 }
+
+export function getShortLabel(key: TextSizeKey) {
+  switch (key) {
+    case TextSizeKey.Paragraph:
+      return 'N';
+    case TextSizeKey.H1:
+      return 'H1';
+    case TextSizeKey.H2:
+      return 'H2';
+    case TextSizeKey.H3:
+      return 'H3';
+  }
+}

@@ -7,6 +7,11 @@ import { initializeEditor } from '../helpers/init';
 
 const editor = createEditor({
   nodes,
+  theme: {
+    text: {
+      underline: 'syntaxy-editor-text-underline',
+    },
+  },
 });
 
 initializeEditor(editor);

@@ -1,1 +1,6 @@
 @tailwind utilities;
+
+/* THEME */
+.syntaxy-editor-text-underline {
+  text-decoration: underline;
+}

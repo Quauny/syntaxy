@@ -6,6 +6,7 @@ import { useEditor } from '@/lib/composables';
 import {
   UNDO_COMMAND,
   REDO_COMMAND,
+  FORMAT_TEXT_COMMAND,
   $getSelection,
   $isRangeSelection,
   $isRootOrShadowRoot,
@@ -41,6 +42,11 @@ const selectedTextSizeShortLabel = computed(() =>
 const isUnorderedListOn = ref(false);
 const isOrderedListOn = ref(false);
 
+/**** FORMAT ****/
+const isBold = ref(false);
+const isItalic = ref(false);
+const isUnderline = ref(false);
+
 function $updateToolbar() {
   const selection = $getSelection();
   if ($isRangeSelection(selection)) {
@@ -58,6 +64,10 @@ function $updateToolbar() {
 
     const elementKey = element.getKey();
     const elementDOM = editor.getElementByKey(elementKey);
+
+    isBold.value = selection.hasFormat('bold');
+    isItalic.value = selection.hasFormat('italic');
+    isUnderline.value = selection.hasFormat('underline');
 
     if (elementDOM !== null) {
       if ($isListNode(element)) {
@@ -128,6 +138,22 @@ onMounted(() => {
       :icon="IconName.OrderedList"
       :active="isOrderedListOn"
       @click="formatList(editor, ListTypeKey.Number)"
+    />
+    <AppSeparator vertical />
+    <AppButton
+      :icon="IconName.Bold"
+      :active="isBold"
+      @click="editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold')"
+    />
+    <AppButton
+      :icon="IconName.Italic"
+      :active="isItalic"
+      @click="editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')"
+    />
+    <AppButton
+      :icon="IconName.Underline"
+      :active="isUnderline"
+      @click="editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')"
     />
     <AppSeparator vertical />
   </div>
